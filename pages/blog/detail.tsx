@@ -9,7 +9,7 @@ export default function Home() {
         <title>详情页</title>
       </Head>
       <main className='flex min-h-screen flex-col items-center p-24'>
-        <div>SSR DEMO Blog Detail</div>
+        <div className='flex'>SSR DEMO Blog Detail</div>
         <Link href='/'> Back</Link>
       </main>
     </Layout>

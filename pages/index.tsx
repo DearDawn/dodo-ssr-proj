@@ -30,21 +30,27 @@ const Home = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  dodoLog(123)
+  // dodoLog('123')
 
   return (
     <Layout>
       <main className='flex min-h-screen flex-col items-center p-24'>
-        <div>
+        <div className='w-full text-center font-medium p-4 box-border'>
           {t('title')} {secondsPassed}
         </div>
-        <Link href='/blog/detail'>{t('detailText')}</Link>
-        <section>
-          <h2>{t('blog')}</h2>
+        <section className='bg-white rounded-2xl mt-5 box-border p-4'>
+          <h2>
+            <span className='font-medium'>{t('blog')}</span>
+            <Link className='text-emerald-700 ml-2' href='/blog/detail'>
+              {t('detailText')}
+            </Link>
+          </h2>
           <ul>
             {allPostsData.map(({ id, date, title }) => (
-              <li key={id}>
-                <Link href={`/blog/${id}`}>{title}</Link>
+              <li key={id} className='mt-2'>
+                <Link className='font-medium' href={`/blog/${id}`}>
+                  {title}
+                </Link>
                 <br />
                 <small>
                   <Date dateString={date} />
