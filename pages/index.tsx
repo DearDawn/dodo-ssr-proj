@@ -9,6 +9,7 @@ import React, { useContext } from 'react'
 import { RootStoreContext } from '@/modal'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { dodoLog } from '@/@dodo-utils'
 
 const Home = ({
   allPostsData = [],
@@ -28,6 +29,8 @@ const Home = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  dodoLog(123)
 
   return (
     <Layout>

@@ -1,0 +1,3 @@
+[submodule "@dodo-utils"]
+	path = @dodo-utils
+	url = git@github.com:DearDawn/dodo-utils.git
