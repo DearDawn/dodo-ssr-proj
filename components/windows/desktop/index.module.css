@@ -1,0 +1,26 @@
+.deskTop {
+  background-color: palegoldenrod;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px);
+  grid-template-rows: repeat(auto-fill, 80px);
+  grid-auto-flow: column;
+  grid-gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .app {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    background-color: darkseagreen;
+    @apply fxc;
+    @apply shadow-md;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.2s;
+      @apply shadow-lg;
+      cursor: pointer;
+    }
+  }
+}

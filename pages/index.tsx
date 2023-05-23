@@ -1,34 +1,47 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import Layout from '@/components/layout'
-import { getSortedPostsData } from '../lib/post'
-import Date from '../components/date'
-import { observer } from 'mobx-react-lite'
-import React, { useContext } from 'react'
-import { RootStoreContext } from '@/modal'
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { dodoLog } from '@/@dodo-utils'
+import Image from 'next/image';
+import { Inter } from 'next/font/google';
+import Link from 'next/link';
+import Layout from '@/components/layout';
+import { getSortedPostsData } from '../lib/post';
+import Date from '../components/date';
+import { observer } from 'mobx-react-lite';
+import React, { useContext } from 'react';
+import { RootStoreContext } from '@/modal';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { dodoLog } from '@/@dodo-utils';
+import { LottieAnimation, loading } from '@/components/loading';
+import Router from 'next/router';
+import { CommonWindow } from '@/components/container/common-window';
 
 const Home = ({
   allPostsData = [],
 }: {
-  allPostsData: Record<string, any>[]
+  allPostsData: Record<string, any>[];
 }) => {
-  const { secondsPassed, increaseTimer } = useContext(RootStoreContext)
-  const { t, i18n } = useTranslation('common')
+  const { secondsPassed, increaseTimer } = useContext(RootStoreContext);
+  const { t, i18n } = useTranslation('common');
 
   React.useEffect(() => {
     const timer = setInterval(() => {
-      increaseTimer()
-    }, 1000)
+      increaseTimer();
+    }, 1000);
 
     return () => {
-      clearInterval(timer)
-    }
+      clearInterval(timer);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
+
+  const handleToDetail = React.useCallback(() => {
+    console.log('[dodo] ', '123', 123);
+    const { close } = loading();
+
+    setTimeout(() => {
+      // Router.push('/blog/detail');
+      close();
+    }, 500);
+  }, []);
 
   // dodoLog('123')
 
@@ -38,11 +51,14 @@ const Home = ({
         <div className='w-full text-center font-medium p-4 box-border'>
           {t('title')} {secondsPassed}
         </div>
-        <section className='bg-white rounded-2xl mt-5 box-border p-4'>
+        <section className='bg-white rounded-2xl mt-5 box-border p-4 shadow-lg'>
           <h2>
             <span className='font-medium'>{t('blog')}</span>
-            <Link className='text-emerald-700 ml-2' href='/blog/detail'>
+            <a className='text-emerald-700 ml-2' onClick={handleToDetail}>
               {t('detailText')}
+            </a>
+            <Link className='font-medium' href='/windows'>
+              To Child
             </Link>
           </h2>
           <ul>
@@ -61,19 +77,19 @@ const Home = ({
         </section>
       </main>
     </Layout>
-  )
-}
+  );
+};
 
-export default observer(Home)
+export default observer(Home);
 
 export async function getStaticProps({ locale }: any) {
-  console.log('[dodo] ', 'locale', locale)
-  const allPostsData = getSortedPostsData()
+  console.log('[dodo] ', 'locale', locale);
+  const allPostsData = getSortedPostsData();
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       allPostsData,
     },
-  }
+  };
 }

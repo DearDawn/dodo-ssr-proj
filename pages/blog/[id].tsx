@@ -1,8 +1,9 @@
-import Head from 'next/head'
-import Layout from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/post'
-import Date from '@/components/date'
-import Link from 'next/link'
+import Head from 'next/head';
+import Layout from '../../components/layout';
+import { getAllPostIds, getPostData } from '../../lib/post';
+import Date from '@/components/date';
+import Link from 'next/link';
+import { CommonWindow } from '@/components/container/common-window';
 
 export default function Post({ postData }: any) {
   return (
@@ -21,24 +22,24 @@ export default function Post({ postData }: any) {
       <hr />
       <Link href='/'> Back</Link>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds()
+  const paths = getAllPostIds();
   return {
     paths,
     // https://nextjs.org/docs/advanced-features/i18n-routing#dynamic-routes-and-getstaticprops-pages
     // https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-true
     fallback: true,
-  }
+  };
 }
 
 export async function getStaticProps({ params }: any) {
-  const postData = await getPostData(params.id)
+  const postData = await getPostData(params.id);
   return {
     props: {
       postData,
     },
-  }
+  };
 }
