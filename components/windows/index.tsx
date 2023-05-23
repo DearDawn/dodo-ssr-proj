@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './index.module.css';
 import clsx from 'clsx';
 import { DeskTop } from './desktop';
+import { WindowsRootStore, WindowsRootStoreContext } from '@/modal/windows';
+import { observer } from 'mobx-react-lite';
 
 interface IProps {
   children: React.ReactNode;
 }
 
-export const Windows = (props: IProps) => {
+export const Windows = observer((props: IProps) => {
   const { children } = props;
+  const { windowList, data } = useContext(WindowsRootStoreContext);
+
+  console.log('[dodo] ', 'getWindowList()', windowList, data);
 
   return (
     <div className={clsx('bg-zinc-300', styles.windows)}>
@@ -28,4 +33,4 @@ export const Windows = (props: IProps) => {
       </div>
     </div>
   );
-};
+});

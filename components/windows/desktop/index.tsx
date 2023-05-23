@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './index.module.css';
 import clsx from 'clsx';
 import { APP_LIST, AppInfo } from '@/constant/application';
+import { WindowsRootStoreContext } from '@/modal/windows';
 
 interface IProps {}
 
 export const DeskTop = (props: IProps) => {
   const [show, changeShow] = useState(false);
+  const { popupWindow } = useContext(WindowsRootStoreContext);
   const appList = APP_LIST;
 
   const handleAppClick = React.useCallback(
     (app: AppInfo) => () => {
       console.log('[dodo] ', 'app', app);
+      popupWindow('777');
     },
-    []
+    [popupWindow]
   );
 
   useEffect(() => {
