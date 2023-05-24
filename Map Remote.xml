@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<map>
+  <toolEnabled>true</toolEnabled>
+  <mappings>
+    <mapMapping>
+      <sourceLocation>
+        <protocol>https</protocol>
+        <host>www.dododawn.com</host>
+        <path>/_next/*</path>
+      </sourceLocation>
+      <destLocation>
+        <protocol>http</protocol>
+        <host>localhost</host>
+        <port>3003</port>
+      </destLocation>
+      <preserveHostHeader>true</preserveHostHeader>
+      <enabled>true</enabled>
+    </mapMapping>
+    <mapMapping>
+      <sourceLocation>
+        <protocol>https</protocol>
+        <host>www.dododawn.com</host>
+        <path>/windows</path>
+      </sourceLocation>
+      <destLocation>
+        <protocol>http</protocol>
+        <host>localhost</host>
+        <port>3003</port>
+      </destLocation>
+      <preserveHostHeader>true</preserveHostHeader>
+      <enabled>true</enabled>
+    </mapMapping>
+  </mappings>
+</map>
