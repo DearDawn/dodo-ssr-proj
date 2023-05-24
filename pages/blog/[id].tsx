@@ -3,7 +3,6 @@ import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/post';
 import Date from '@/components/date';
 import Link from 'next/link';
-import { CommonWindow } from '@/components/container/common-window';
 
 export default function Post({ postData }: any) {
   return (

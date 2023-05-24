@@ -1,5 +1,5 @@
 .deskTop {
-  background-color: palegoldenrod;
+  background-color: #fff;
   display: grid;
   grid-template-columns: repeat(auto-fill, 80px);
   grid-template-rows: repeat(auto-fill, 80px);

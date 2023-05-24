@@ -12,7 +12,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { dodoLog } from '@/@dodo-utils';
 import { LottieAnimation, loading } from '@/components/loading';
 import Router from 'next/router';
-import { CommonWindow } from '@/components/container/common-window';
 
 const Home = ({
   allPostsData = [],

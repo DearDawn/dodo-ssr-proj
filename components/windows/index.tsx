@@ -9,11 +9,8 @@ interface IProps {
   children: React.ReactNode;
 }
 
-export const Windows = observer((props: IProps) => {
+const Windows = (props: IProps) => {
   const { children } = props;
-  const { windowList, data } = useContext(WindowsRootStoreContext);
-
-  console.log('[dodo] ', 'getWindowList()', windowList, data);
 
   return (
     <div className={clsx('bg-zinc-300', styles.windows)}>
@@ -25,7 +22,7 @@ export const Windows = observer((props: IProps) => {
       </div>
       <div
         className={clsx(
-          'relative w-full h-full z-[2] overflow-auto pointer-events-none',
+          'relative w-full h-full z-[2] overflow-hidden pointer-events-none',
           styles.container
         )}
       >
@@ -33,4 +30,6 @@ export const Windows = observer((props: IProps) => {
       </div>
     </div>
   );
-});
+};
+
+export default observer(Windows);

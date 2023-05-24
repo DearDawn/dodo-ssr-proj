@@ -11,24 +11,24 @@ export const APP_LIST: AppInfo[] = [
     color: 'red',
     name: 'A',
     url: 'http://zeroing.jd.com/',
-    baseRoute: '/jd',
+    baseRoute: '/a',
   },
   {
     color: 'green',
     name: 'B',
     url: 'http://zeroing.jd.com/',
-    baseRoute: '/jd',
+    baseRoute: '/b',
   },
   {
     color: 'blue',
     name: 'C',
     url: 'http://zeroing.jd.com/',
-    baseRoute: '/jd',
+    baseRoute: '/c',
   },
   {
     color: 'pink',
     name: 'D',
     url: 'http://zeroing.jd.com/',
-    baseRoute: '/jd',
+    baseRoute: '/d',
   },
 ];
