@@ -33,7 +33,6 @@ const Home = ({
   }, []);
 
   const handleToDetail = React.useCallback(() => {
-    console.log('[dodo] ', '123', 123);
     const { close } = loading();
 
     setTimeout(() => {
@@ -82,7 +81,6 @@ const Home = ({
 export default observer(Home);
 
 export async function getStaticProps({ locale }: any) {
-  console.log('[dodo] ', 'locale', locale);
   const allPostsData = getSortedPostsData();
 
   return {

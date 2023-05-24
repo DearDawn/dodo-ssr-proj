@@ -13,8 +13,12 @@ export const DeskTop = (props: IProps) => {
 
   const handleAppClick = React.useCallback(
     (app: AppInfo) => () => {
-      console.log('[dodo] ', 'app', app);
-      popupWindow({ name: app.name, url: app.url, baseRoute: app.baseRoute });
+      popupWindow({
+        name: app.name,
+        title: app.title,
+        url: app.url,
+        baseRoute: app.baseRoute,
+      });
     },
     [popupWindow]
   );
@@ -39,7 +43,7 @@ export const DeskTop = (props: IProps) => {
           key={it.name}
           onClick={handleAppClick(it)}
         >
-          {it.name}
+          {it.title}
         </div>
       ))}
     </div>

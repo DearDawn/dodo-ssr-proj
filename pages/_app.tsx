@@ -4,12 +4,40 @@ import { appWithTranslation } from 'next-i18next';
 import microApp from '@micro-zoe/micro-app';
 import { useEffect } from 'react';
 import router from 'next/router';
-import { Windows } from '@/components/windows';
 
 const App = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     // 初始化micro-app
-    microApp.start();
+    microApp.start({
+      lifeCycles: {
+        created(e) {
+          console.log('created');
+        },
+        beforemount(e) {
+          console.log('beforemount');
+        },
+        mounted(e) {
+          console.log('mounted');
+        },
+        unmount(e) {
+          console.log('unmount');
+        },
+        error(e) {
+          console.log('error');
+        },
+      },
+      fetch(url, options, appName) {
+        console.log('[dodo] ', 'url,options,appName', url, options, appName);
+        const config = {
+          // fetch 默认不带cookie，如果需要添加cookie需要配置credentials
+          credentials: 'include', // 请求时带上cookie
+        };
+
+        return window
+          .fetch(url.replace('.html', ''), Object.assign(options, config))
+          .then((res) => res.text());
+      },
+    });
 
     /**
      * BUG FIX
