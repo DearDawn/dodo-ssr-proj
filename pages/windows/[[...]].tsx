@@ -40,7 +40,6 @@ const MyPage = () => {
               name={window.name}
               url={window.url}
               // baseroute={window.baseRoute} // baseroute(可选)：基座应用分配给子应用的基础路由，就是上面的 `/my-page`
-
               onCreated={() => console.log('micro-app元素被创建')}
               onBeforemount={() => console.log('即将被渲染')}
               onMounted={() => console.log('已经渲染完成')}

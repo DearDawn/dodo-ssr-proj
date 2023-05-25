@@ -1,6 +1,7 @@
 import { makeAutoObservable, observable } from 'mobx';
 import { createContext } from 'react';
 import { unmountApp } from '@micro-zoe/micro-app';
+import Router from 'next/router';
 
 export class WindowsRootStore {
   private _windowList: TWD.WindowQueue = [];
@@ -52,9 +53,15 @@ export class WindowsRootStore {
     return this._windowList.find((it) => it.name === name);
   };
 
+  _changeRoute = (window?: TWD.WindowItem) => {
+    Router.push(`/windows${window?.baseRoute || ''}`);
+  };
+
   activeWindow = (name = ''): void => {
     const targetWindow = this.hasWindow(name);
+
     if (targetWindow) {
+      this._changeRoute(targetWindow);
       if (targetWindow.zIndex < this._topWindowZ) {
         targetWindow.zIndex = this._newWindowZ;
       }
@@ -72,6 +79,8 @@ export class WindowsRootStore {
         ...this._windowList.slice(0, index),
         ...this._windowList.slice(index + 1),
       ];
+
+      this._changeRoute();
     } else {
       console.warn('[dodo] ', '目标窗口不存在');
     }
@@ -93,6 +102,7 @@ export class WindowsRootStore {
       ...window,
       zIndex: this._newWindowZ,
     };
+    this._changeRoute(newWindow);
 
     this._windowList = [...this._windowList, newWindow];
   };
