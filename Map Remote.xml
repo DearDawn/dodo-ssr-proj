@@ -21,7 +21,7 @@
       <sourceLocation>
         <protocol>https</protocol>
         <host>www.dododawn.com</host>
-        <path>/windows</path>
+        <path>/windows*</path>
       </sourceLocation>
       <destLocation>
         <protocol>http</protocol>

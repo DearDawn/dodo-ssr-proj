@@ -1,11 +1,19 @@
 .commonWindowWrap {
-  width: 700px;
-  height: 400px;
+  --window-width: 700px;
+  --window-height: 400px;
+  --window-min-width: 300px;
+  --window-min-height: 200px;
+  width: var(--window-width);
+  height: var(--window-height);
+  min-width: var(--window-min-width);
+  min-height: var(--window-min-height);
   overflow: hidden;
   border-radius: 10px;
   background-color: #f5f5f5;
-  @apply shadow-xl;
-  @apply posabc;
+  @apply shadow-lg;
+  position: absolute;
+  top: calc(50% - var(--window-height) / 2);
+  left: calc(50% - var(--window-width) / 2);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -36,11 +44,13 @@
   position: relative;
   padding: 0 10px;
   gap: 10px;
+  z-index: 10;
 }
 
 .title {
   flex: 1;
   @apply fxc;
+  cursor: default;
 }
 
 .options,
@@ -61,6 +71,15 @@
       background-color: #fff;
     }
   }
+}
+
+.resize {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
 }
 
 .commonWindow {

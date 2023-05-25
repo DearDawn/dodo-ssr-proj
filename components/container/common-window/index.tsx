@@ -2,6 +2,7 @@ import React, { DOMAttributes, useEffect, useState } from 'react';
 import styles from './index.module.css';
 import clsx from 'clsx';
 import useDraggable from '@/utils/hooks/useDraggable';
+import useResizable from '@/utils/hooks/useResizable';
 
 interface IProps {
   children: React.ReactNode;
@@ -22,6 +23,7 @@ export const CommonWindow = (props: IProps & DOMAttributes<HTMLDivElement>) => {
   } = props;
   const [show, changeShow] = useState(false);
   const { ref } = useDraggable(show);
+  const { handlerRef } = useResizable(show, ref);
 
   useEffect(() => {
     changeShow(true);
@@ -48,6 +50,7 @@ export const CommonWindow = (props: IProps & DOMAttributes<HTMLDivElement>) => {
         </div>
       </div>
       <div className={clsx(styles.commonWindow)}>{children}</div>
+      <div className={styles.resize} ref={handlerRef}></div>
     </div>
   );
 };
