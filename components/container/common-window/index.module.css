@@ -1,8 +1,6 @@
 .commonWindowWrap {
   --window-width: 700px;
   --window-height: 400px;
-  --window-min-width: 300px;
-  --window-min-height: 200px;
   width: var(--window-width);
   height: var(--window-height);
   min-width: var(--window-min-width);

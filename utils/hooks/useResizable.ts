@@ -4,7 +4,7 @@ function useResizable(show = false, ref?: React.RefObject<HTMLDivElement>) {
   const handlerRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
   const size = useRef({ w: 0, h: 0 });
-  const lastPosition = useRef({ x: 0, y: 0 });
+  const minSize = { minW: 300, minH: 200 };
   const _targetRef = ref || targetRef;
 
   useEffect(() => {
@@ -35,15 +35,15 @@ function useResizable(show = false, ref?: React.RefObject<HTMLDivElement>) {
       if (isDragging) {
         offset.x = event.clientX - basePos.x;
         offset.y = event.clientY - basePos.y;
-        _targetRef.current.style.width = `${size.current.w + offset.x}px`;
-        _targetRef.current.style.height = `${size.current.h + offset.y}px`;
+        const calcW = size.current.w + offset.x;
+        const calcH = size.current.h + offset.y;
+        _targetRef.current.style.width = `${Math.max(calcW, minSize.minW)}px`;
+        _targetRef.current.style.height = `${Math.max(calcH, minSize.minH)}px`;
       }
     }
 
     function handleMouseUp(event: MouseEvent) {
       isDragging = false;
-      lastPosition.current.x += offset.x;
-      lastPosition.current.y += offset.y;
 
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
