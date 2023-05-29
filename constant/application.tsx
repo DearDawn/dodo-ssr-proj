@@ -23,10 +23,17 @@ export const APP_LIST: AppInfo[] = [
     baseRoute: '/notice',
   },
   {
-    color: 'orange',
+    color: 'pink',
     name: 'about',
     title: '关于',
     url: 'https://www.dododawn.com/about/',
     baseRoute: '/notice',
+  },
+  {
+    color: 'skyblue',
+    name: 'hope',
+    title: '未来想做',
+    url: 'https://www.dododawn.com/hope-wall/',
+    baseRoute: '/hope',
   },
 ];
