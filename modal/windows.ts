@@ -1,7 +1,7 @@
-import { makeAutoObservable, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { createContext } from 'react';
-import { unmountApp } from '@micro-zoe/micro-app';
 import Router from 'next/router';
+import { TWD } from '@/types/windows';
 
 export class WindowsRootStore {
   private _windowList: TWD.WindowQueue = [];

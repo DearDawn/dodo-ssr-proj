@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev --port 4000",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "next start -p 4000",
     "lint": "next lint",
     "d_dev": "fnm use 16; npm run dev"
   },
   "dependencies": {
-    "@micro-zoe/micro-app": "^0.8.11",
+    "@micro-zoe/micro-app": "^1.0.0-rc.18",
     "@types/node": "18.15.11",
     "@types/react": "18.0.34",
     "@types/react-dom": "18.0.11",

@@ -8,15 +8,15 @@ export default function Post({ postData }: any) {
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{postData?.title}</title>
       </Head>
-      {postData.title}
+      {postData?.title}
       <br />
-      {postData.id}
+      {postData?.id}
       <br />
-      <Date dateString={postData.date} />
+      <Date dateString={postData?.date} />
       <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <div dangerouslySetInnerHTML={{ __html: postData?.contentHtml }} />
 
       <hr />
       <Link href='/'> Back</Link>
