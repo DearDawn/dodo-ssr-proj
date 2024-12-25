@@ -2,8 +2,8 @@ import * as React from 'react';
 import lottie from 'lottie-web';
 import clsx from 'clsx';
 import ReactDOM from 'react-dom';
-const chickAnimation = require('public/animations/Polite Chick.json');
-const bikeAnimation = require('public/animations/bike.json');
+const chickAnimation = require('/public/animations/PoliteChick.json');
+const bikeAnimation = require('/public/animations/bike.json');
 
 interface IProps {}
 
@@ -41,8 +41,14 @@ export const LottieAnimation = (props: IProps) => {
 
   return (
     <div className='lottie-box fixed w-screen h-screen bg-gray-500 top-0 bg-opacity-50 flex flex-col items-center justify-center'>
-      <div className='w-1/2' id='chick'></div>
-      <div className='w-1/2' id='lottie'></div>
+      <div
+        className='w-1/2'
+        id='chick'
+      ></div>
+      <div
+        className='w-1/2'
+        id='lottie'
+      ></div>
     </div>
   );
 };
